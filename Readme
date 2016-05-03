@@ -1,0 +1,22 @@
+This program requires R to run.
+
+R Packages:
+
+library(shiny)
+library(shinyRGL)
+library(shinyjs)
+
+How to run:
+
+Download all files and put in a folder.
+Create a new notepad file and paste following line
+
+Rscript transApp.R
+
+save it as transfacAnalysis.bat
+
+Run transfacAnalysis.bat
+
+Important Note:
+
+Before uploading file to software make sure to open it and save it as ".txt" file

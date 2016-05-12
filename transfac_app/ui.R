@@ -4,7 +4,7 @@ library(shinyjs)
 shinyUI(
   fluidPage(
     titlePanel(
-      strong((h1("TRANSFAC Analysis",style="color:Blue",align="center"))),windowTitle = "UKB TRANSFAC")
+      strong((h1("TOFAT: TRANSFAC Output File Analysis Tool",style="color:Blue",align="center"))),windowTitle = "TOFAT")
 
     ##### left first panel###
     ,column(2,wellPanel(height=20,

@@ -1,6 +1,6 @@
 library(ggplot2)
 options(shiny.maxRequestSize=Inf)
-
+x = read.csv("BKL Accession and IlluminaIds.txt",sep="\t",header=TRUE)
 shinyServer(function(input, output,session) {
   dataSet = reactive({
     inFile = input$TFReport
@@ -110,7 +110,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "GOMF")
+      res = subset(annotation,annotation[,1] == "GOMF")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$GOBP <- renderTable(
@@ -118,7 +124,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "GOBP")
+      res = subset(annotation,annotation[,1] == "GOBP")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$GOCC <- renderTable(
@@ -126,7 +138,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "GOCC")
+      res = subset(annotation,annotation[,1] == "GOCC")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$Dis <- renderTable(
@@ -134,7 +152,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "disease")
+      res = subset(annotation,annotation[,1] == "disease")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$Tum <- renderTable(
@@ -142,7 +166,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "tumor")
+      res = subset(annotation,annotation[,1] == "tumor")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$OGT <- renderTable(
@@ -150,7 +180,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "tissue")
+      res = subset(annotation,annotation[,1] == "tissue")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$CL <- renderTable(
@@ -158,7 +194,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "cell")
+      res = subset(annotation,annotation[,1] == "cell")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   output$pways <- renderTable(
@@ -166,7 +208,13 @@ shinyServer(function(input, output,session) {
       return(NULL)
     else{
       annotation = read.csv(input$FuncAnalysis$datapath,header=TRUE,sep="\t")
-      subset(annotation,annotation[,1] == "pathway")
+      res = subset(annotation,annotation[,1] == "pathway")
+      GeneList = c()
+      for (i in 1:nrow(res)){
+        GeneList[i] = paste(x[which(x$BIOBASE.accession %in% unlist(strsplit(toString(res$Genes[i])," "))),"HGNC"],collapse = " ")
+      }
+      res$Genes = GeneList
+      res
     }
   )
   
